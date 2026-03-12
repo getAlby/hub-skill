@@ -2,6 +2,8 @@
 
 The first-time setup flow initialises the hub and starts the lightning node. `setup` can only be run once — it is a one-time operation.
 
+> **Important:** When the user asks to "set up a new wallet" or "install Alby Hub", start by confirming the hub is installed and running. Only proceed to `setup`/`start` after the hub process is up.
+
 ## Commands
 
 ```bash
@@ -16,16 +18,19 @@ npx @getalby/hub-cli get-info
 npx @getalby/hub-cli get-node-status
 ```
 
+> **Password privacy:** Do not ask the user to share their password in the conversation. Instead, tell the user the command to run themselves (substituting `YOUR_PASSWORD`), or acknowledge that the password will be visible in the terminal/shell history. Only accept the password in-chat if the user explicitly volunteers it. The user can also change their password later.
+
 ## Next Steps: Get Lightning Capacity
 
-After setup, open an inbound channel via an LSP — this is the recommended path and requires no on-chain bitcoin deposit:
+After setup, the recommended first step is opening a channel via an LSP — no on-chain bitcoin deposit required:
 
 ```bash
-# See available LSPs and their fees
+# See available LSPs — returned in priority order, filter to your active network
 npx @getalby/hub-cli get-channel-suggestions
 
-# Request an invoice from your chosen LSP
-npx @getalby/hub-cli request-lsp-order --amount 1000000 --lsp-type <type> --lsp-identifier <identifier>
+# Ask the user for their preferred channel size (suggest 500,000 sats as default)
+# Use the first LSP in the list that you don't already have a channel with
+npx @getalby/hub-cli request-lsp-order --amount 500000 --lsp-type <type> --lsp-identifier <identifier>
 
 # Pay the invoice to open the channel (or have a human pay it on testnet)
 npx @getalby/hub-cli pay-invoice <invoice>
@@ -34,6 +39,10 @@ npx @getalby/hub-cli pay-invoice <invoice>
 See [LSP](./lsp.md) for full details.
 
 Alternatively, deposit on-chain funds first with `get-onchain-address` and open an outbound channel — but the LSP path above is simpler for most users.
+
+## After Opening a Channel
+
+Remind the user to review their backup options to protect their funds. See [Hub Management](./hub-management.md) for backup details.
 
 ## Notes
 
