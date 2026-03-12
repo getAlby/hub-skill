@@ -1,11 +1,11 @@
-# Alby Hub CLI Skill
+# Alby Hub Skill
 
 An agent skill that teaches Claude how to use [`@getalby/hub-cli`](https://github.com/getAlby/hub-cli) to manage an [Alby Hub](https://github.com/getAlby/hub) self-custodial lightning node.
 
 ## Installation
 
 ```bash
-npx skills add getAlby/hub-cli-skill
+npx skills add getAlby/hub-skill
 ```
 
 Or place the skill directory manually in your `.claude/skills/` folder.
