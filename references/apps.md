@@ -21,6 +21,12 @@ npx @getalby/hub-cli create-app --name "My App" \
 npx @getalby/hub-cli create-app --name "Isolated App" --isolated --unlock-password YOUR_PASSWORD
 ```
 
+## After Creating an App
+
+After `create-app` succeeds, offer to display the `nostrWalletConnectUrl` (NWC connection string) as a QR code for easy scanning. On Linux this can be done with `qrencode`.
+
+Ask the user if they'd like a QR code before running commands.
+
 ## Notes
 
 - `create-app` returns a `nostrWalletConnectUrl` (NWC connection string) that the external app uses to connect.

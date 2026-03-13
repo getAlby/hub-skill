@@ -30,6 +30,16 @@ npx @getalby/hub-cli close-channel --peer-id <pubkey> --channel-id <id>
 npx @getalby/hub-cli close-channel --peer-id <pubkey> --channel-id <id> --force
 ```
 
+## After Opening a Channel
+
+After opening a channel (either outbound or via LSP), immediately run `list-channels` and report the confirmation status to the user:
+
+```bash
+npx @getalby/hub-cli list-channels
+```
+
+Look at the `confirmations` and `confirmationsRequired` fields on the new channel and tell the user: how many confirmations are required, and how many have been received so far. This sets expectations — the channel won't be usable until fully confirmed.
+
 ## Notes
 
 - Opening an outbound channel requires on-chain funds. Use `get-onchain-address` to deposit first.

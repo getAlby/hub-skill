@@ -43,7 +43,7 @@ Opening a channel via an LSP is the recommended first step — no on-chain depos
 npx @getalby/hub-cli get-channel-suggestions
 
 # Request an invoice from the chosen LSP
-npx @getalby/hub-cli request-lsp-order --amount 1000000 --lsp-type <type> --lsp-identifier <identifier>
+npx @getalby/hub-cli request-lsp-order --amount 500000 --lsp-type <type> --lsp-identifier <identifier>
 ```
 
 Print the invoice as a **single unbroken line** so the user can copy-paste it easily. If the terminal may wrap it, offer to write it to a file.

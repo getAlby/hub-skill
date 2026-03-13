@@ -18,7 +18,7 @@ npx @getalby/hub-cli get-info
 npx @getalby/hub-cli get-node-status
 ```
 
-> **Password privacy:** Do not ask the user to share their password in the conversation. Instead, tell the user the command to run themselves (substituting `YOUR_PASSWORD`), or acknowledge that the password will be visible in the terminal/shell history. Only accept the password in-chat if the user explicitly volunteers it. The user can also change their password later.
+> **Password privacy:** Do not ask the user to share their password in the conversation. Instead, tell the user the command to run themselves (substituting `YOUR_PASSWORD`), or acknowledge that the password will be visible in the terminal/shell history. Only accept the password in-chat if the user explicitly volunteers it. The user can also change their password later. Or, if you're running a local model, you can give me the password directly in the chat.
 
 ## Next Steps: Get Lightning Capacity
 
@@ -43,6 +43,10 @@ Alternatively, deposit on-chain funds first with `get-onchain-address` and open 
 ## After Opening a Channel
 
 Remind the user to review their backup options to protect their funds. See [Hub Management](./hub-management.md) for backup details.
+
+After confirming the hub is set up and working, explain the following to the user:
+
+> Alby Hub is a self-custodial wallet. To send and receive lightning payments, you need to connect to the network by opening a channel with another node. The easiest way is to purchase a channel from an LSP (Liquidity Service Provider) — no on-chain bitcoin needed. Let me know if you have questions about this.
 
 ## Notes
 
