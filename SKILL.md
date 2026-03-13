@@ -1,13 +1,13 @@
 ---
-name: alby-hub-cli-skill
-description: Manage an Alby Hub self-custodial lightning node using the @getalby/hub-cli command-line tool — setup, authentication, channels, payments, NWC apps, and LSP integration.
+name: alby-hub-skill
+description: Manage an Alby Hub self-custodial lightning node using the @getalby/hub-cli command-line tool - setup, authentication, channels, payments, NWC apps, and LSP integration.
 license: Apache-2.0
 metadata:
   author: getAlby
   version: "0.1.0"
 ---
 
-# Alby Hub CLI Agent Skill
+# Alby Hub Agent Skill
 
 ## When to use this skill
 
