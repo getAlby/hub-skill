@@ -37,6 +37,15 @@ npx @getalby/hub-cli pay-invoice <invoice>
 - **Do not open two channels with the same LSP** — prefer diversifying across providers.
 - Filter the list to the user's active network (e.g. signet for Mutinynet, bitcoin for mainnet) before presenting options.
 
+## Interpreting get-channel-suggestions Output
+
+The `get-channel-suggestions` output includes fields like channel size and fee ranges per LSP. Key distinction:
+
+- **Channel size** (e.g. `minimumChannelSize`, `maximumChannelSize`): The inbound capacity the LSP will open for you. This is NOT the amount you pay — it is what you _receive_ (ability to receive payments up to this amount). A 2,000,000 sat channel does not mean you need 2M sats.
+- **Fee**: The small amount you actually pay to the LSP, via a lightning invoice returned by `request-lsp-order`. This is the only cost to the user.
+
+When comparing LSPs for a user, compare fees (what they pay), not channel sizes. For example: "Provider A costs 5,762 sats to open a 2M sat channel" — not "if you have 2M sats available."
+
 ## Channel Size
 
 Before requesting an invoice, **ask the user** how large a channel they want. Suggest **500,000 sats** as a reasonable default if they have no preference.
