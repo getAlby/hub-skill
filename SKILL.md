@@ -62,3 +62,11 @@ All commands output JSON to stdout. Errors are written to stderr as JSON with a 
 ### Language Conventions
 
 Use lowercase for "bitcoin" and "lightning" unless they appear as the first word in a sentence.
+
+### User Communication
+
+**Do NOT give users CLI commands to run** unless one of these two conditions applies:
+1. The task requires input the agent cannot provide (e.g. a password) — in that case, give the command template with a placeholder like `YOUR_PASSWORD` and explain what the user should do.
+2. The user explicitly asks for the CLI command.
+
+For all other follow-up checking or monitoring, use plain language. For example: *"If you'd like to check whether your channel is ready to use, just ask."*
