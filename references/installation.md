@@ -11,8 +11,10 @@ See [Alby Cloud](./alby-cloud.md).
 Installs as a systemd service that starts automatically on boot.
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/getAlby/hub/master/scripts/linux-x86_64/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/getAlby/hub/master/scripts/linux-x86_64/install.sh)" -- -y --skip-verify -s
 ```
+
+Flags: `-y` non-interactive, `--skip-verify` skip PGP signature verification, `-s` install as systemd service.
 
 Default port: `http://localhost:8029`
 
@@ -23,8 +25,10 @@ To update later: run `./update.sh` in the install directory. Backup data lives i
 Installs as a systemd service that starts automatically on boot. Same approach as x86_64, different script:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/getAlby/hub/master/scripts/linux-aarch64/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/getAlby/hub/master/scripts/linux-aarch64/install.sh)" -- -y --skip-verify -s
 ```
+
+Flags: `-y` non-interactive, `--skip-verify` skip PGP signature verification, `-s` install as systemd service.
 
 ## Linux x86_64 / aarch64 — HTTP Server Binary (Manual)
 
