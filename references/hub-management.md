@@ -35,9 +35,7 @@ npx @getalby/hub-cli change-password \
 
 ## Backup
 
-`backup-mnemonic` writes the 12-word wallet recovery phrase to a `.recovery` file (default: `~/.hub-cli/albyhub.recovery`). The command outputs `{ "success": true, "file": "<path>" }`.
-
-> **IMPORTANT:** The agent MUST NOT read the backup file at any point. Just tell the user the file location so they can store it securely offline. The recovery phrase is sensitive — reading it would expose it in conversation history.
+See [Backups](./backups.md) for backup information.
 
 ## Change Password
 

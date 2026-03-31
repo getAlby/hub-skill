@@ -40,6 +40,8 @@ npx @getalby/hub-cli list-channels
 
 Look at the `confirmations` and `confirmationsRequired` fields on the new channel and tell the user: how many confirmations are required, and how many have been received so far. This sets expectations — the channel won't be usable until fully confirmed.
 
+See [Backups](./backups.md) for information on static channel backups.
+
 ## Notes
 
 - Opening an outbound channel requires on-chain funds. Use `get-onchain-address` to deposit first.
