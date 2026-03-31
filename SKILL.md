@@ -4,7 +4,7 @@ description: Manage an Alby Hub self-custodial lightning node using the @getalby
 license: Apache-2.0
 metadata:
   author: getAlby
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Alby Hub Agent Skill
@@ -30,7 +30,7 @@ Use this skill to manage an Alby Hub lightning node via the CLI.
 ### Running the CLI
 
 ```bash
-npx @getalby/hub-cli [options] <command>
+npx -y @getalby/hub-cli [options] <command>
 ```
 
 ### Default Hub URL
@@ -66,7 +66,8 @@ Use lowercase for "bitcoin" and "lightning" unless they appear as the first word
 ### User Communication
 
 **Do NOT give users CLI commands to run** unless one of these two conditions applies:
+
 1. The task requires input the agent cannot provide (e.g. a password) — in that case, give the command template with a placeholder like `YOUR_PASSWORD` and explain what the user should do.
 2. The user explicitly asks for the CLI command.
 
-For all other follow-up checking or monitoring, use plain language. For example: *"If you'd like to check whether your channel is ready to use, just ask."*
+For all other follow-up checking or monitoring, use plain language. For example: _"If you'd like to check whether your channel is ready to use, just ask."_
