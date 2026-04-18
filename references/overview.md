@@ -6,16 +6,16 @@ Alby Hub is a self-custodial lightning node you run yourself. The `@getalby/hub-
 
 ```bash
 # Show help
-npx @getalby/hub-cli --help
+npx -y @getalby/hub-cli@0.4.0 hub-cli --help
 
 # Hub status, version, backend type
-npx @getalby/hub-cli get-info
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-info
 
 # Lightning node readiness
-npx @getalby/hub-cli get-node-status
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-node-status
 
 # Health check with active alarms
-npx @getalby/hub-cli get-health
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-health
 ```
 
 ## Global Options

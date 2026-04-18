@@ -8,14 +8,14 @@ The first-time setup flow initialises the hub and starts the lightning node. `se
 
 ```bash
 # Step 1: Initialise the hub (one-time only) — LDK backend is the default
-npx @getalby/hub-cli setup --password YOUR_PASSWORD
+npx -y @getalby/hub-cli@0.4.0 hub-cli setup --password YOUR_PASSWORD
 
 # Step 2: Start the node and save the JWT token to disk
-npx @getalby/hub-cli start --password YOUR_PASSWORD --save
+npx -y @getalby/hub-cli@0.4.0 hub-cli start --password YOUR_PASSWORD --save
 
 # Verify the node is running
-npx @getalby/hub-cli get-info
-npx @getalby/hub-cli get-node-status
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-info
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-node-status
 ```
 
 > **Password privacy:** Do not ask the user to share their password in the conversation. Instead, tell the user the command to run themselves (substituting `YOUR_PASSWORD`), or acknowledge that the password will be visible in the terminal/shell history. Only accept the password in-chat if the user explicitly volunteers it. The user can also change their password later. Or, if you're running a local model, you can give me the password directly in the chat.
@@ -26,14 +26,14 @@ After setup, the recommended first step is opening a channel via an LSP — no o
 
 ```bash
 # See available LSPs — returned in priority order, filter to your active network
-npx @getalby/hub-cli get-channel-suggestions
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-channel-suggestions
 
 # Ask the user for their preferred channel size (suggest 500,000 sats as default)
 # Use the first LSP in the list that you don't already have a channel with
-npx @getalby/hub-cli request-lsp-order --amount 500000 --lsp-type <type> --lsp-identifier <identifier>
+npx -y @getalby/hub-cli@0.4.0 hub-cli request-lsp-order --amount 500000 --lsp-type <type> --lsp-identifier <identifier>
 
 # Pay the invoice to open the channel (or have a human pay it on testnet)
-npx @getalby/hub-cli pay-invoice <invoice>
+npx -y @getalby/hub-cli@0.4.0 hub-cli pay-invoice <invoice>
 ```
 
 See [LSP](./lsp.md) for full details.

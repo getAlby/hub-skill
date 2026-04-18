@@ -6,19 +6,19 @@ Commands for managing NWC (Nostr Wallet Connect) app connections. NWC apps allow
 
 ```bash
 # List NWC app connections
-npx @getalby/hub-cli apps
+npx -y @getalby/hub-cli@0.4.0 hub-cli apps
 
 # Create a new NWC connection with default permissions
-npx @getalby/hub-cli create-app --name "My App"
+npx -y @getalby/hub-cli@0.4.0 hub-cli create-app --name "My App"
 
 # Create with custom scopes and a spending budget
-npx @getalby/hub-cli create-app --name "My App" \
+npx -y @getalby/hub-cli@0.4.0 hub-cli create-app --name "My App" \
   --scopes "pay_invoice,get_balance" \
   --max-amount 10000 \
   --budget-renewal monthly
 
 # Create an isolated sub-wallet app (separate balance)
-npx @getalby/hub-cli create-app --name "Isolated App" --isolated --unlock-password YOUR_PASSWORD
+npx -y @getalby/hub-cli@0.4.0 hub-cli create-app --name "Isolated App" --isolated --unlock-password YOUR_PASSWORD
 ```
 
 ## After Creating an App

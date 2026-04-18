@@ -6,20 +6,20 @@ Most commands require a JWT token. Tokens are obtained via `start` or `unlock` a
 
 ```bash
 # Start the node and save the JWT token (use after setup or machine restart)
-npx @getalby/hub-cli start --password YOUR_PASSWORD --save
+npx -y @getalby/hub-cli@0.4.0 hub-cli start --password YOUR_PASSWORD --save
 
 # Get a fresh token for an already-running hub (no node restart)
-npx @getalby/hub-cli unlock --password YOUR_PASSWORD --save
+npx -y @getalby/hub-cli@0.4.0 hub-cli unlock --password YOUR_PASSWORD --save
 
 # Get a readonly token
-npx @getalby/hub-cli unlock --password YOUR_PASSWORD --permission readonly --save
+npx -y @getalby/hub-cli@0.4.0 hub-cli unlock --password YOUR_PASSWORD --permission readonly --save
 
 # Pass token inline (highest priority)
-npx @getalby/hub-cli balances -t eyJ...
+npx -y @getalby/hub-cli@0.4.0 hub-cli balances -t eyJ...
 
 # Use environment variable
 export HUB_TOKEN="eyJ..."
-npx @getalby/hub-cli balances
+npx -y @getalby/hub-cli@0.4.0 hub-cli balances
 ```
 
 ## Token Priority
