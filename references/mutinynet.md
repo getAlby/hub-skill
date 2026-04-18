@@ -27,11 +27,11 @@ Do **not** redirect stdout. Logs are written to `{WORK_DIR}/log/nwc.log`.
 
 ```bash
 # Initialise and start the hub (LDK is the default backend)
-npx @getalby/hub-cli setup --password YOUR_PASSWORD
-npx @getalby/hub-cli start --password YOUR_PASSWORD --save
+npx -y @getalby/hub-cli@0.4.0 hub-cli setup --password YOUR_PASSWORD
+npx -y @getalby/hub-cli@0.4.0 hub-cli start --password YOUR_PASSWORD --save
 
 # Verify the node is running
-npx @getalby/hub-cli get-info
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-info
 ```
 
 ## Getting Inbound Capacity (Recommended Path)
@@ -40,10 +40,10 @@ Opening a channel via an LSP is the recommended first step — no on-chain depos
 
 ```bash
 # List available LSPs — filter results to signet/Mutinynet entries only
-npx @getalby/hub-cli get-channel-suggestions
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-channel-suggestions
 
 # Request an invoice from the chosen LSP
-npx @getalby/hub-cli request-lsp-order --amount 500000 --lsp-type <type> --lsp-identifier <identifier>
+npx -y @getalby/hub-cli@0.4.0 hub-cli request-lsp-order --amount 500000 --lsp-type <type> --lsp-identifier <identifier>
 ```
 
 Print the invoice as a **single unbroken line** so the user can copy-paste it easily. If the terminal may wrap it, offer to write it to a file.
@@ -55,7 +55,7 @@ The LSP invoice must be paid manually via https://faucet.mutinynet.com — the a
 If an on-chain deposit is needed instead:
 
 ```bash
-npx @getalby/hub-cli get-onchain-address
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-onchain-address
 ```
 
 Visit https://faucet.mutinynet.com to send test sats to the address.

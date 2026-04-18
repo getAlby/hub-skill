@@ -15,7 +15,7 @@ Connecting requires two steps:
 **Step 1** — Get the authorization URL:
 
 ```bash
-npx @getalby/hub-cli connect-alby-account
+npx -y @getalby/hub-cli@0.4.0 hub-cli connect-alby-account
 ```
 
 This returns a JSON object with an `albyAuthUrl`. Tell the user to open that URL in their browser, sign in to their Alby account, and copy the authorization code they receive.
@@ -23,7 +23,7 @@ This returns a JSON object with an `albyAuthUrl`. Tell the user to open that URL
 **Step 2** — Submit the authorization code:
 
 ```bash
-npx @getalby/hub-cli connect-alby-account --code <code>
+npx -y @getalby/hub-cli@0.4.0 hub-cli connect-alby-account --code <code>
 ```
 
 On success, returns `{ "success": true }`. If the account is already connected, step 1 returns `{ "albyAccountConnected": true, "albyUserIdentifier": "..." }` instead of a URL.

@@ -15,8 +15,8 @@ The human must subscribe to Alby Cloud at https://getalby.com/subscription/new a
    ```
 3. The CLI auto-uses `https://my.albyhub.com` and sets the required routing headers. Use `start`/`unlock` as normal:
    ```bash
-   npx @getalby/hub-cli start --password YOUR_PASSWORD --save
-   npx @getalby/hub-cli balances
+   npx -y @getalby/hub-cli@0.4.0 hub-cli start --password YOUR_PASSWORD --save
+   npx -y @getalby/hub-cli@0.4.0 hub-cli balances
    ```
 
 To override the hub name for a single invocation, set the `ALBY_HUB_NAME` env var.

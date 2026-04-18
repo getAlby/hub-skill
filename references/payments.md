@@ -6,31 +6,31 @@ Commands for sending and receiving lightning payments, checking balances, and qu
 
 ```bash
 # Lightning + on-chain balances
-npx @getalby/hub-cli get-balances
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-balances
 
 # Get an on-chain deposit address
-npx @getalby/hub-cli get-onchain-address
+npx -y @getalby/hub-cli@0.4.0 hub-cli get-onchain-address
 
 # Pay a BOLT11 invoice
-npx @getalby/hub-cli pay-invoice lnbc...
+npx -y @getalby/hub-cli@0.4.0 hub-cli pay-invoice lnbc...
 
 # Pay a zero-amount invoice, specifying the amount in millisatoshis
-npx @getalby/hub-cli pay-invoice lnbc... --amount 1000
+npx -y @getalby/hub-cli@0.4.0 hub-cli pay-invoice lnbc... --amount 1000
 
 # Pay a lightning address (user@domain)
-npx @getalby/hub-cli pay-lightning-address user@domain.com --amount 1000
+npx -y @getalby/hub-cli@0.4.0 hub-cli pay-lightning-address user@domain.com --amount 1000
 
 # Create a BOLT11 invoice
-npx @getalby/hub-cli make-invoice --amount 1000 --description "test"
+npx -y @getalby/hub-cli@0.4.0 hub-cli make-invoice --amount 1000 --description "test"
 
 # List recent payments
-npx @getalby/hub-cli list-transactions
+npx -y @getalby/hub-cli@0.4.0 hub-cli list-transactions
 
 # List with pagination
-npx @getalby/hub-cli list-transactions --limit 50 --offset 0
+npx -y @getalby/hub-cli@0.4.0 hub-cli list-transactions --limit 50 --offset 0
 
 # Look up a specific payment by payment hash
-npx @getalby/hub-cli lookup-transaction <paymentHash>
+npx -y @getalby/hub-cli@0.4.0 hub-cli lookup-transaction <paymentHash>
 ```
 
 ## On-Chain Reserve Warning
