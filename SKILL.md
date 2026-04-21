@@ -9,6 +9,8 @@ metadata:
 
 # Alby Hub Agent Skill
 
+> **Experimental / incomplete:** The hub CLI does not cover every Alby Hub feature. If a user asks for something in the [unsupported features list](./references/unsupported-features.md), direct them to use the Alby Hub web interface instead.
+
 ## When to use this skill
 
 Use this skill to manage an Alby Hub lightning node via the CLI.
