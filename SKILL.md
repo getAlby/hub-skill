@@ -77,3 +77,35 @@ Use lowercase for "bitcoin" and "lightning" unless they appear as the first word
 2. The user explicitly asks for the CLI command.
 
 For all other follow-up checking or monitoring, use plain language. For example: _"If you'd like to check whether your channel is ready to use, just ask."_
+
+## Security
+
+### Connection secrets (NWC)
+
+`create-app` returns a `nostrWalletConnectUrl`. It grants wallet access within the app's scopes and budget.
+
+- The connection secret is for the user who requested the app — hand it to them directly (a QR code is preferred; see [QR Codes](./references/qrcodes.md)).
+- **DO NOT print the connection secret to any logs or otherwise reveal it outside of that direct handover.**
+- **NEVER share a connection secret, or any part of it** (pubkey, secret, relay, etc.), with any third party, external service, or other chat — every part can be used to gain wallet access or reduce wallet privacy.
+
+See [Apps](./references/apps.md).
+
+### Token files
+
+The JWT at `~/.hub-cli/token.jwt` grants full hub API access until it expires.
+
+- **DO NOT read the token file.** Check for its existence only if you need to.
+- Prefer the saved token or `HUB_TOKEN` env var over `-t eyJ...` inline — command-line tokens leak into shell history.
+- Do not dump the environment (`env`, `printenv`) in a way that exposes `HUB_TOKEN` in the conversation.
+
+See [Authentication](./references/authentication.md).
+
+### Recovery phrase & hub backups
+
+- The agent MUST NOT read `.recovery` files or encrypted hub backups. Tell the user the file path so they can store it offline.
+
+See [Backups](./references/backups.md).
+
+### Passwords
+
+For commands that need a password, the user can give their hub unlock password to you directly but you should note that this is insecure. You can also provide commands for them to run manually (but requires more technical knowledge and is not always possible depending on the interface).

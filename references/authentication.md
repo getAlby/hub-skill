@@ -30,6 +30,8 @@ npx -y @getalby/hub-cli@0.4.0 hub-cli balances
 | 2        | `HUB_TOKEN` env var      | `export HUB_TOKEN=eyJ...`     |
 | 3        | `~/.hub-cli/token.jwt`   | Written by `--save`           |
 
+> **IMPORTANT — tokens are sensitive.** A JWT grants full hub API access until it expires. Do not read `~/.hub-cli/token.jwt` (check for existence only if needed). Prefer the saved token or `HUB_TOKEN` over `-t eyJ...` inline — command-line tokens leak into shell history. Do not dump the environment in conversation. See [Security](../SKILL.md#security).
+
 ## Alby Cloud
 
 See [Alby Cloud](./alby-cloud.md).
