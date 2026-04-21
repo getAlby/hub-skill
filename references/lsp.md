@@ -58,7 +58,7 @@ Before requesting an invoice, **ask the user** how large a channel they want. Su
 
 ## Invoice Display
 
-Present the LSP invoice as a **single unbroken string** so the user can copy-paste it. If the terminal may wrap long lines, warn the user that they may need to manually remove any spaces introduced by wrapping. Alternatively, offer to display the invoice as a QR code.
+Present the LSP invoice as a **single unbroken string** so the user can copy-paste it. If the terminal may wrap long lines, warn the user that they may need to manually remove any spaces introduced by wrapping. Alternatively, offer to display the invoice as a QR code — see [QR Codes](./qrcodes.md).
 
 ## Notes
 

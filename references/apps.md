@@ -23,9 +23,7 @@ npx -y @getalby/hub-cli@0.4.0 hub-cli create-app --name "Isolated App" --isolate
 
 ## After Creating an App
 
-After `create-app` succeeds, offer to display the `nostrWalletConnectUrl` (NWC connection string) as a QR code for easy scanning. On Linux this can be done with `qrencode`.
-
-Ask the user if they'd like a QR code before running commands.
+After `create-app` succeeds, offer to display the `nostrWalletConnectUrl` (NWC connection string) as a QR code for easy scanning. See [QR Codes](./qrcodes.md).
 
 ## Notes
 

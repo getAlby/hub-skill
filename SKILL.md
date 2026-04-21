@@ -25,6 +25,7 @@ Use this skill to manage an Alby Hub lightning node via the CLI.
 - [Channels: Open/close channels, peers, connect-peer, node connection info](./references/channels.md)
 - [Payments: Pay/make invoices, transactions, lookup, balances, wallet address](./references/payments.md)
 - [Apps: NWC app management — create-app, list apps](./references/apps.md)
+- [QR Codes: Display invoices and NWC connection strings as QR codes using qrencode](./references/qrcodes.md)
 - [Mutinynet: Signet testing setup without real bitcoin](./references/mutinynet.md)
 
 ## Key Rules

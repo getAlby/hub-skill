@@ -16,6 +16,8 @@ Installs as a systemd service that starts automatically on boot.
 
 Flags: `-y` non-interactive, `--skip-verify` skip PGP signature verification, `-s` install as systemd service.
 
+After the script completes, verify with `systemctl status albyhub`. If the script fails, diagnose and fix the specific error then re-run it — do **not** fall back to a manual binary install or create your own systemd service.
+
 Default port: `http://localhost:8029`
 
 To update later: run `./update.sh` in the install directory. Backup data lives in `[install path]/data`.
@@ -30,18 +32,20 @@ Installs as a systemd service that starts automatically on boot. Same approach a
 
 Flags: `-y` non-interactive, `--skip-verify` skip PGP signature verification, `-s` install as systemd service.
 
-## Linux x86_64 / aarch64 — HTTP Server Binary (Manual)
+After the script completes, verify with `systemctl status albyhub`. If the script fails, diagnose and fix the specific error then re-run it — do **not** fall back to a manual binary install or create your own systemd service.
+
+## Linux x86_64 / aarch64 — HTTP Server Binary (Manual - not recommended)
 
 For testing or running in a specific folder without systemd. The binary starts an HTTP server you manage yourself.
 
 **Download the latest release:**
 
 ```bash
-# Find the latest release asset name
-gh release view --repo getAlby/hub
-
-# Download (replace FILENAME with the actual asset, e.g. albyhub-Linux-x86_64.tar.bz2)
-curl -L -o albyhub.tar.bz2 https://github.com/getAlby/hub/releases/latest/download/FILENAME
+# Asset filenames follow this pattern — use the one matching your architecture:
+#   albyhub-Server-Linux-x86_64.tar.bz2   (x86_64)
+#   albyhub-Server-Linux-aarch64.tar.bz2  (ARM64)
+curl -L --no-progress-meter -o albyhub.tar.bz2 \
+  https://github.com/getAlby/hub/releases/latest/download/albyhub-Server-Linux-x86_64.tar.bz2
 tar -xjf albyhub.tar.bz2
 ```
 
