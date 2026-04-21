@@ -25,6 +25,8 @@ npx -y @getalby/hub-cli@0.4.0 hub-cli create-app --name "Isolated App" --isolate
 
 After `create-app` succeeds, offer to display the `nostrWalletConnectUrl` (NWC connection string) as a QR code for easy scanning. See [QR Codes](./qrcodes.md).
 
+> **IMPORTANT — connection secrets are sensitive.** The `nostrWalletConnectUrl` grants wallet access. Hand it to the user who requested the app and nowhere else — do not print it to logs, send it to any third party or external service, or echo it into unrelated output. Every part — pubkey, secret, relay — is sensitive. See [Security](../SKILL.md#security).
+
 ## Notes
 
 - `create-app` returns a `nostrWalletConnectUrl` (NWC connection string) that the external app uses to connect.
