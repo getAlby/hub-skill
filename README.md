@@ -4,11 +4,19 @@ An agent skill that teaches Claude how to use [`@getalby/hub-cli`](https://githu
 
 ## Installation
 
+### 🚀 Install with single command
+
 ```bash
-npx skills add getAlby/hub-skill
+npx skills add getAlby/payments-skill
 ```
 
-Or place the skill directory manually in your `.claude/skills/` folder.
+### 🦞 OpenClaw
+
+Tell your agent to install the skill:
+
+```txt
+Install this skill as a custom skill: https://getalby.com/cli/SKILL.md
+```
 
 ## Example Agent Prompts
 
