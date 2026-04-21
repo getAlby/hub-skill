@@ -7,7 +7,7 @@ An agent skill that teaches Claude how to use [`@getalby/hub-cli`](https://githu
 ### 🚀 Install with single command
 
 ```bash
-npx skills add getAlby/payments-skill
+npx skills add getAlby/hub-skill
 ```
 
 ### 🦞 OpenClaw
@@ -15,7 +15,7 @@ npx skills add getAlby/payments-skill
 Tell your agent to install the skill:
 
 ```txt
-Install this skill as a custom skill: https://getalby.com/cli/SKILL.md
+Install this skill as a custom skill: https://getalby.com/hub/SKILL.md
 ```
 
 ## Example Agent Prompts
