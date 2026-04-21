@@ -48,6 +48,8 @@ After confirming the hub is set up and working, explain the following to the use
 
 > Alby Hub is a self-custodial wallet. To send and receive lightning payments, you need to connect to the network by opening a channel with another node. The easiest way is to purchase a channel from an LSP (Liquidity Service Provider) — no on-chain bitcoin needed. Let me know if you have questions about this.
 
+Then walk the user through the [Post-Setup Checklist](./post-setup-checklist.md) — offer to help with each remaining item one at a time rather than dumping the whole list.
+
 ## Notes
 
 - If user is using Alby Cloud, setup is NOT needed. Human will complete setup manually.

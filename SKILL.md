@@ -19,6 +19,7 @@ Use this skill to manage an Alby Hub lightning node via the CLI.
 - [Overview: What Alby Hub is and how the CLI fits in](./references/overview.md)
 - [Backends: LDK, LND, Phoenixd, Cashu — features and configuration](./references/backends.md)
 - [Initial Setup: First-time hub initialisation flow](./references/initial-setup.md)
+- [Post-Setup Checklist: Things a new user should do AFTER initial setup — surface on first setup or when asked "what's next?"](./references/post-setup-checklist.md)
 - [Authentication: Token management, start, unlock, token priority](./references/authentication.md)
 - [Hub Management: Stop, health, info, node status](./references/hub-management.md)
 - [Alby Account: Connect your Alby account — benefits, lightning address, encrypted backups, connect-alby-account command](./references/alby-account.md)
