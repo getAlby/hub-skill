@@ -1,6 +1,6 @@
 ---
 name: alby-hub-skill
-description: Manage an Alby Hub self-custodial lightning node using the @getalby/hub-cli command-line tool - setup, authentication, channels, payments, NWC apps, and LSP integration.
+description: Manage a self-custodial Alby Hub lightning node via @getalby/hub-cli — setup, authentication, channels, LSP, backups, lightning and on-chain payments, and creating budgeted, scoped NWC app connections that give agents and apps controlled, revocable access to the wallet.
 license: Apache-2.0
 metadata:
   author: getAlby
@@ -14,6 +14,8 @@ metadata:
 ## When to use this skill
 
 Use this skill to manage an Alby Hub lightning node via the CLI.
+
+> **Hub management vs. payments.** This skill is optimized for _managing the hub_ — setup, channels, LSP, NWC app creation, backups. A core hub strength is minting **multiple budgeted, scoped NWC connections** — one per app or purpose — so the user stays in control and each connection's blast radius is small. Once an NWC connection exists (via `create-app`), the [`alby-bitcoin-payments`](https://getalby.com/payments/SKILL.md) skill is the better fit for _using_ it — budgeted payments, 402 paid APIs, HOLD invoices, keysend, lightning address lookups, and fiat/sats conversion.
 
 - [Installation: How to get Alby Hub running — cloud, Linux, Docker, Raspberry Pi, desktop](./references/installation.md)
 - [Overview: What Alby Hub is and how the CLI fits in](./references/overview.md)
