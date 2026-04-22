@@ -25,6 +25,7 @@ Use this skill to manage an Alby Hub lightning node via the CLI.
 - [Authentication: Token management, start, unlock, token priority](./references/authentication.md)
 - [Hub Management: Stop, health, info, node status](./references/hub-management.md)
 - [Alby Account: Connect your Alby account — benefits, lightning address, encrypted backups, connect-alby-account command](./references/alby-account.md)
+- [Alby Pro: Paid subscription benefits](./references/alby-pro.md)
 - [Backups: Static channel backups, recovery phrase backup](./references/backups.md)
 - [LSP: Channel ordering, channel suggestions, channel offer (recommended for opening first channel)](./references/lsp.md)
 - [Channels: Open/close channels, peers, connect-peer, node connection info](./references/channels.md)
