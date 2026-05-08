@@ -10,14 +10,6 @@ An agent skill that teaches Claude how to use [`@getalby/hub-cli`](https://githu
 npx skills add getAlby/hub-skill
 ```
 
-### 🦞 OpenClaw
-
-Tell your agent to install the skill:
-
-```txt
-Install this skill as a custom skill: https://getalby.com/hub/SKILL.md
-```
-
 ## Example Agent Prompts
 
 - "Set up my Alby Hub."
