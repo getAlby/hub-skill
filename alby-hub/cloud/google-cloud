@@ -1,0 +1,398 @@
+// this skill: https://github.com/getAlby/hub-skill and this guide: https://getalby.com/alby-hub/cloud/google-cloud to install Alby Hub on Google Cloud and guide me through the setup
+
+
+Run Alby Hub with Google Cloud
+Run your own Alby Hub on Google Cloud using an Ubuntu virtual machine, Docker Compose, and persistent storage on your server.
+Prerequisites
+Google Cloud is a good option if you want to run Alby Hub on your own cloud server while keeping control over the setup.
+
+Before you begin, make sure you have:
+
+01
+Google Cloud account
+02
+Basic familiarity with running terminal commands
+Google Cloud may require billing details before you can create a Compute Engine VM. Depending on Google Cloud pricing, your selected machine type, region, disk and usage, charges may apply. Google Cloud may also offer free trial credits for eligible accounts. See their pricing page for more details.
+
+
+Let your agent guide you
+Ask your AI agent to help you install Alby Hub on Google Cloud and guide you through the installation with Alby Hub Skill.
+
+Copy Prompt
+Alby Hub Skill Github
+Deploy Alby Hub on Google Cloud
+01
+Create a Google Cloud project
+Open the Google Cloud Console and sign in with your Google account.
+
+At the top of the console, click the project selector, then click New Project and enter a project name, eg. Alby Hub, and click Create.
+
+After the project is created, switch into the new project from the project selector.
+
+02
+Create a folder for your Alby Hub
+Open Billing in the Google Cloud Console.
+
+Link your new project to a billing account.
+
+Make sure billing is active for the project. Without billing enabled, Google Cloud usually will not allow you to create a Compute Engine VM.
+
+03
+Open Compute Engine
+In the Google Cloud Console, search for:
+
+Compute Engine
+Open Compute Engine, then go to VM instances from the sidebar.
+
+If prompted, enable the Compute Engine API.
+
+Wait until Compute Engine is ready, then return to VM instances.
+
+04
+Create a VM instance
+Enter all the required details.
+
+Name
+
+Use a clear name for the VM, for example albyhub.
+
+Region and zone
+
+Choose a region close to where you will usually access your Hub.
+
+Any standard zone in that region is fine.
+
+Machine configuration
+
+Use the following options:
+
+Machine family: General Purpose
+
+Series: E2
+
+Machine type: e2-small (2 vCPU, 1 core, 2 GB memory)
+
+The e2-small machine type is a good starting point for a personal Alby Hub.
+
+OS and storage
+
+In the OS and storage section, click Change.
+
+Use:
+
+Operating system: Ubuntu
+
+Version: Ubuntu 24.04 LTS
+
+Boot disk size: 10 GB
+
+For the Boot disk type, you can use:
+
+Standard persistent disk: No-cost option and good enough for a simple Alby Hub setup
+
+Balanced persistent disk: Faster SSD-backed option, but may cost more
+
+For a simple personal setup, Standard persistent disk is a good starting point.
+
+Networking
+
+You do not need to enable HTTP or HTTPS traffic here for the basic Alby Hub setup.
+
+Alby Hub runs on port 8080, so you will create a separate firewall rule for it later.
+
+Click Create and wait until the VM is running.
+
+05
+Reserve a static external IP (Optional)
+This step is recommended because it prevents your VM's public IP address from changing later.
+
+In the Console, go to:
+
+VPC network → IP addresses
+Find the external IP address used by your VM.
+
+Change it from Ephemeral to Static.
+
+Give it a name, for example: albyhub-ip
+
+06
+Create a firewall rule for Alby Hub web access
+Alby Hub runs on port 8080.
+
+In the Console, go to:
+
+VPC network → Firewall
+Click Create firewall rule.
+
+
+Use the following options:
+
+Name: allow-albyhub-8080
+
+Logs: Off
+
+Network: default
+
+Priority: 1000 (default)
+
+Direction of traffic: Ingress (default)
+
+Action on match: Allow (default)
+
+Under Targets, choose:
+
+Targets: All instances in the network
+
+Under Source filter, choose:
+
+Source filter: IPv4 ranges
+
+Source IPv4 ranges:
+
+Your IP address, if you want to restrict access
+
+0.0.0.0/0, only if you intentionally want to make it publicly reachable
+
+Under Protocol and ports, choose:
+
+Specified protocols and ports
+
+TCP: 8080
+
+Click Create.
+
+07
+Open the Lightning port for LDK
+If you plan to use LDK as your Lightning backend, you must also open port 9735 so your node can accept Lightning peer connections.
+
+Create another firewall rule and use these settings:
+
+Name: allow-albyhub-9735
+
+Logs: Off
+
+Network: default
+
+Priority: 1000 (default)
+
+Direction of traffic: Ingress (default)
+
+Action on match: Allow (default)
+
+Under Targets, choose:
+
+Targets: All instances in the network
+
+Under Source filter, choose:
+
+Source filter: IPv4 ranges
+
+Source IPv4 ranges:
+
+Your IP address, if you want to restrict access
+
+0.0.0.0/0, only if you intentionally want to make it publicly reachable
+
+Under Protocol and ports, choose:
+
+Specified protocols and ports
+
+TCP: 9735
+
+Click Create.
+
+Port 9735 is used for Lightning peer-to-peer communication.
+
+You do not need to open port 443 for the basic setup unless you configure HTTPS separately with a reverse proxy or custom domain.
+
+After adding the rules, your firewall list should look similar to this, with one rule for Alby Hub web access on tcp:8080 and one rule for Lightning peer connections on tcp:9735 (if added)
+
+
+08
+SSH into the VM
+Go back to:
+
+Compute Engine → VM instances
+Find your albyhub VM instance and click SSH button in the table.
+
+This opens a browser-based SSH terminal where you can run commands on your server.
+
+You can also connect from your own terminal using SSH if you prefer, but the browser-based SSH option is the easiest way to get started.
+
+09
+Update the server
+In the SSH terminal, update the package list and upgrade installed packages:
+
+10
+Install Docker and Docker Compose
+Install Docker and Docker Compose:
+
+sudo apt install -y
+Enable and start Docker:
+
+sudo systemctl enable docker
+sudo systemctl start
+
+11
+Create a working folder for Alby Hub
+Create a folder for your Alby Hub deployment:
+
+mkdir albyhub
+cd albyhub
+mkdir
+
+The albyhub-data folder stores your Hub data on the server.
+
+12
+Add the Docker Compose file
+You can either download the official Docker Compose file or create it manually.
+
+Option A: Download the Docker Compose file
+
+Run: 
+
+wget
+Option B: Create the Docker Compose file manually
+
+Create a new file:
+
+Paste the following content:
+
+services:
+  albyhub:
+    container_name: albyhub
+    image: ghcr.io/getalby/hub:latest
+    volumes:
+      - ./albyhub-data:/data
+    ports:
+      - "8080:8080"
+    environment:
+      - WORK_DIR=/data/albyhub
+    stop_grace_period: 300s
+    # Optional: restart Alby Hub automatically when the instance reboots.
+    # restart: unless-stopped
+You can add restart: unless-stopped to restart Alby Hub automatically when the instance reboots. You will still need to unlock your Hub manually unless auto-unlock is enabled in Alby Hub settings.
+
+Save the file and exit.
+
+In nano, press Ctrl + O, then Enter, then Ctrl + X.
+
+13
+Start Alby Hub
+Start Alby Hub in the background:
+
+sudo docker compose up -d
+Check that the container is running:
+
+sudo docker compose ps
+You can also view the logs:
+
+sudo docker compose logs -f
+If the logs are running without repeated errors, Alby Hub has started successfully!
+
+Press Ctrl + C to stop following the logs. This does not stop Alby Hub.
+
+14
+Open Alby Hub in your browser
+Copy the public IPv4 address of your Google Cloud VM.
+
+Open the following URL in your browser:
+
+For example:
+
+You should see the Alby Hub welcome screen.
+
+15
+Set up Alby Hub
+Click Get Started and follow the setup flow in Alby Hub.
+
+During setup, save any important recovery or backup information shown by Alby Hub. Your Hub data is stored on your Google Cloud VM, but you should still keep your own backup so you can recover or migrate your Hub later.
+
+
+How to update Alby Hub on Google Cloud
+Alby Hub will show an update banner inside the app when a new version is available.
+
+When you see the update banner, connect to your Google Cloud VM again and update your deployment. 
+
+Go to your Alby Hub folder:
+
+cd
+Pull the newest image:
+
+sudo
+Recreate the container with the new image:
+
+sudo docker compose up -d
+Check that Alby Hub started cleanly:
+
+sudo docker compose ps
+sudo docker compose logs -f
+If there is no new Alby Hub version available, docker compose pull may pull the same image again. You only need to update when Alby Hub shows an update banner or when you know a new release is available.
+
+Newsletter
+
+Alby Buzz
+No-nonsense updates about the bitcoin apps ecosystem straight to your inbox every month.
+
+Enter your e-mail here
+Alby
+
+Blog
+Blog
+Guides
+Guides
+Referrals
+Referrals
+Support
+Support
+Community Call
+Community Call
+Open Hours
+Open Hours
+Brandkit
+Brandkit
+Request a Feature
+Request a Feature
+Bitcoin Apps
+Bitcoin Apps
+Terms of Service
+Terms of Service
+Privacy policy
+Privacy policy
+Integrations
+
+Claude
+Claude
+Codex
+Codex
+OpenClaw
+OpenClaw
+Developers
+
+Github
+Github
+Developers
+Developers
+AI & Agents
+AI & Agents
+Documentation
+Documentation
+Open Issues
+Open Issues
+Open Bounties
+Open Bounties
+Nostr Wallet Connect
+Nostr Wallet Connect
+Bitcoin Connect
+Bitcoin Connect
+Pkgzap
+Pkgzap
+Socials
+
+X
+Nostr
+Discord
+YouTube
+Alby Inc. 2026
+
+Deploy Alby Hub with Google Cloud | Alby
